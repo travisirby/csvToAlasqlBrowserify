@@ -8596,16 +8596,12 @@ document.getElementById('uploader').addEventListener('change', readFile, false);
 function readFile (evt) {
     var files = evt.target.files;
     var file = files[0];           
-    var reader = new FileReader();
     var readStream = fileReaderStream(file);
     alasql("CREATE TABLE example1 (a FLOAT)");
 
       csv()
       .fromStream(readStream)
       .on('json',(jsonObj)=>{
-      	// combine csv header row and csv line to a json object
-      	// jsonObj.a ==> 1 or 4
-        // console.dir(jsonObj)
         var units = jsonObj['Units Sold'];
         alasql(`INSERT INTO example1 VALUES (${units})`);
       })
@@ -8616,7 +8612,6 @@ function readFile (evt) {
         console.dir(res)
       })
 
-    // reader.readAsText(file)
 }
 
 },{"alasql":47,"csvtojson":49,"filereader-stream":77}],47:[function(require,module,exports){
