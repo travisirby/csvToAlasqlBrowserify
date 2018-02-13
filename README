@@ -1,6 +1,9 @@
 npm install
-browserify main.js -o bundle.js
 load index.html in your browser
 upload 100000 Sales Records.csv or 500000 Sales Records.csv
 open browser console for log
+
+*if making an edit:
+npm install -g browserify
+browserify main.js -o bundle.js
 
